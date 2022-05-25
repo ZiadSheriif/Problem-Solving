@@ -1,26 +1,32 @@
-#include<iostream>
-#include<vector>
-#include<unordered_map>
-#include<climits>
-#include<map>
-#include<set>
-#include<limits.h>
-#include<iomanip>
-
+#include <iostream>
+typedef long long digit;
 using namespace std;
-
-#include<string>
-
-typedef long long ll;
-typedef unsigned long long ull;
-typedef long double ld;
-
-typedef vector<int> vi;
-typedef vector<long long> vll;
-typedef vector<double> vd;
-typedef vector<vi> vvi;
-typedef vector<string> vs;
-#define rep(i, v) for(int i=0;i<v.size();++i)
-
-#define fast ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+#include <vector>
+#include <iomanip>
+#include <climits>
+#include <stack>
+#include <sstream>
+#include <algorithm>
+#include <queue>
+#include <string>
+#include <string.h>
+#include <math.h>
+const int Max = 26;
 #define M_PI 3.14159265358979323846
+long long n, x, y, a, b, c, d, s, r, k, w;
+double m, o, t;
+bool test = false;
+string solve()
+{
+    cin >> r >> s;
+    if (2 * r <= s)
+        return "Square";
+    else if (2 * r >= s * sqrt(2))
+        return "Circle";
+    else
+        return "Complex";
+}
+int main()
+{
+    cout << solve();
+}
