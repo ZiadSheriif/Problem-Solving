@@ -1,3 +1,5 @@
+
+
 #include <bits/stdc++.h>
 #include <iostream>
 #include <vector>
@@ -43,29 +45,33 @@ ll lcm(ll a, ll b)
     return (a / gcd(a, b)) * b;
 }
 
-void solve()
-{
-}
-
 int main()
 {
     fast;
-    cin >> n;
-    vll nei(n);
-    for (ll &x : nei)
-        cin >> x;
-    cin >> m;
-    vll super(m);
-    for (ll &x : super)
-        cin >> x;
-    sort(super.begin(), super.end());
-    for (int i = 0; i < n; ++i)
+    int aa = 0, bb = 0, cc = 0;
+    cin >> t;
+    while (t--)
     {
-        auto it = upper_bound(super.begin(), super.end(), nei[i]);
-        auto temp = it;
-        temp--;
-        if (abs(*temp - nei[i]) < abs(*it - nei[i]))
-            it--;
-        cout << *it << endl;
+        cin >> a >> b >> c;
+        x = max(max(a, b), c);
+        if (a != x)
+            aa = (x - a) + 1;
+        else if (a == b || a == c)
+            aa = 1;
+        else
+            aa = 0;
+        if (b != x)
+            bb = (x - b) + 1;
+        else if (b == a || b == c)
+            bb = 1;
+        else
+            bb = 0;
+        if (c != x)
+            cc = (x - c) + 1;
+        else if (c == a || c == b)
+            cc = 1;
+        else
+            cc = 0;
+        cout << aa << " " << bb << " " << cc << endl;
     }
 }

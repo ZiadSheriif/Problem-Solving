@@ -50,22 +50,24 @@ void solve()
 int main()
 {
     fast;
-    cin >> n;
-    vll nei(n);
-    for (ll &x : nei)
-        cin >> x;
-    cin >> m;
-    vll super(m);
-    for (ll &x : super)
-        cin >> x;
-    sort(super.begin(), super.end());
-    for (int i = 0; i < n; ++i)
+    cin >> t;
+    while (t--)
     {
-        auto it = upper_bound(super.begin(), super.end(), nei[i]);
-        auto temp = it;
-        temp--;
-        if (abs(*temp - nei[i]) < abs(*it - nei[i]))
-            it--;
-        cout << *it << endl;
+        ll near = LONG_LONG_MIN, far = LONG_LONG_MIN;
+        cin >> d >> n;
+        if (n == 0)
+        {
+            cout << 0 << " " << 0 << "\n";
+            continue;
+        }
+        for (int i = 0; i < n; ++i)
+        {
+            cin >> x;
+            ll minDis = min(d - x, x);
+            ll maxDis = max(d - x, x);
+            near = max(minDis, near);
+            far = max(maxDis, far);
+        }
+        cout << near << " " << far << endl;
     }
 }

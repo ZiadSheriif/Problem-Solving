@@ -43,29 +43,30 @@ ll lcm(ll a, ll b)
     return (a / gcd(a, b)) * b;
 }
 
-void solve()
+void primeFactors()
 {
+    cin >> n;
+    ll cnt = 0;
+    while (n % 2 == 0)
+    {
+        cnt++;
+        n = n / 2;
+    }
+    for (int i = 3; i <= sqrt(n); i = i + 2)
+    {
+        while (n % i == 0)
+        {
+            cnt++;
+            n = n / i;
+        }
+    }
+    if (n > 2)
+        cnt++;
+    cout << cnt;
 }
 
 int main()
 {
     fast;
-    cin >> n;
-    vll nei(n);
-    for (ll &x : nei)
-        cin >> x;
-    cin >> m;
-    vll super(m);
-    for (ll &x : super)
-        cin >> x;
-    sort(super.begin(), super.end());
-    for (int i = 0; i < n; ++i)
-    {
-        auto it = upper_bound(super.begin(), super.end(), nei[i]);
-        auto temp = it;
-        temp--;
-        if (abs(*temp - nei[i]) < abs(*it - nei[i]))
-            it--;
-        cout << *it << endl;
-    }
+    primeFactors();
 }
