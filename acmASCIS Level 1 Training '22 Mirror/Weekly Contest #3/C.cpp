@@ -42,11 +42,37 @@ ll lcm(ll a, ll b)
 {
     return (a / gcd(a, b)) * b;
 }
-void solve()
-{
-}
 
 int main()
 {
     fast;
+    cin >> n;
+    vll tops(n);
+    cin >> x;
+    tops[0] = x;
+    for (int i = 1; i < n; i++)
+    {
+        cin >> x;
+        tops[i] = tops[i - 1] + x;
+    }
+    cin >> t;
+    while (t--)
+    {
+        cin >> a;
+        if (a == 1)
+        {
+            cin >> b >> c;
+            if (b != 1)
+                cout << tops[c - 1] - tops[b - 2] << "\n";
+            else
+                cout << tops[c - 1] << "\n";
+        }
+        else if (a == 2)
+        {
+            cin >> x;
+            tops.push_back(x + tops[tops.size() - 1]);
+        }
+        else
+            tops.pop_back();
+    }
 }

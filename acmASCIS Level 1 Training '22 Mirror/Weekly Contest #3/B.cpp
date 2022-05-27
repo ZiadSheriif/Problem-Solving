@@ -49,4 +49,17 @@ void solve()
 int main()
 {
     fast;
+    cin >> n;
+    set<int> mySet;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> x;
+        mySet.insert(x);
+    }
+    ll mul = 1;
+    for (auto it = mySet.begin(); it != mySet.end(); it++)
+    {
+        mul *= (*it);
+    }
+    cout << mul;
 }

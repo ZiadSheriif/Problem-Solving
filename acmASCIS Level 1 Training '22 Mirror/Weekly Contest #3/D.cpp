@@ -49,4 +49,28 @@ void solve()
 int main()
 {
     fast;
+    cin >> n;
+    stack<char> stemp;
+    char letter;
+    cin >> letter;
+    stemp.push(letter);
+    n--;
+    while (n--)
+    {
+        cin >> letter;
+        if (letter != stemp.top())
+        {
+            stemp.push(letter);
+        }
+    }
+    cin >> m;
+    while (m--)
+    {
+        cin >> letter;
+        if (letter != stemp.top())
+        {
+            stemp.push(letter);
+        }
+        cout << stemp.size() << "\n";
+    }
 }

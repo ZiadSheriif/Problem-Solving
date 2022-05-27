@@ -49,4 +49,31 @@ void solve()
 int main()
 {
     fast;
+    unordered_map<ll, ll> myMap;
+    cin >> n >> x;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> y;
+        if (y < x)
+            myMap[y]++;
+    }
+    auto it = myMap.begin();
+    ll count = 0, Size = myMap.size();
+    while (Size--)
+    {
+        if (myMap.find(x - it->first) != myMap.end())
+        {
+            ll temp = 2 * it->first;
+            if (x == temp)
+            {
+                temp = myMap[x - it->first];
+                count += (temp * (temp - 1));
+            }
+            else
+                count += ((myMap[x - it->first]) * (myMap[it->first]));
+        }
+        it++;
+    }
+    cout << count / 2;
+    return 0;
 }

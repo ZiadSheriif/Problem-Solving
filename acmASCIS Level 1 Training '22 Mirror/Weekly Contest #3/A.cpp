@@ -49,4 +49,11 @@ void solve()
 int main()
 {
     fast;
+    string Numbers[11] = {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
+    cin >> n;
+    cin >> S;
+    for (char letter : S)
+    {
+        cout << Numbers[letter - '0'] << " ";
+    }
 }
