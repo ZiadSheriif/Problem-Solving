@@ -42,11 +42,31 @@ ll lcm(ll a, ll b)
 {
     return (a / gcd(a, b)) * b;
 }
-void solve()
-{
-}
 
 int main()
 {
     fast;
+    string S1;
+    map<string, string> Networks;
+    cin >> n;
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> a >> S >> S1;
+        if (Networks.find(S1) == Networks.end())
+            Networks.insert({S1, S});
+        else
+            Networks[S1] = S;
+
+        if (a == 2)
+            if (Networks.find(S) == Networks.end())
+                Networks.insert({S, S1});
+            else
+                Networks[S] = S1;
+    }
+    cin >> t;
+    while (t--)
+    {
+        cin >> S;
+        cout << Networks[S] << "\n";
+    }
 }

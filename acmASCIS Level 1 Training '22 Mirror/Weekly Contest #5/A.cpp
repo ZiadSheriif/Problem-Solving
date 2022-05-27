@@ -42,11 +42,57 @@ ll lcm(ll a, ll b)
 {
     return (a / gcd(a, b)) * b;
 }
-void solve()
-{
-}
 
 int main()
 {
     fast;
+    string S1;
+    unordered_map<double, int> Mapp;
+    ll size = 0;
+    double cnt = 0.0;
+    cin >> n;
+    cin.ignore();
+    while (n--)
+    {
+        double temp;
+        getline(cin, S);
+        if (S[1] != '-')
+        {
+            char ch = S[0];
+            S.erase(0, 2);
+            temp = stod(S);
+            if (ch == '+')
+            {
+                Mapp[temp]++;
+                cnt += temp;
+                size++;
+            }
+            else
+            {
+                if (Mapp.find(temp) != Mapp.end())
+                {
+                    Mapp[temp]--;
+                    cnt -= temp;
+                    size--;
+                }
+            }
+        }
+        else
+        {
+            S.erase(0, 3);
+            temp = stod(S);
+            if (Mapp.find(temp) != Mapp.end())
+            {
+                cnt -= (Mapp[temp] * temp);
+                size -= Mapp[temp];
+                Mapp.erase(temp);
+            }
+        }
+        if (Mapp.empty())
+        {
+            cout << 0 << endl;
+            continue;
+        }
+        cout << fixed << setprecision(6) << cnt / size << "\n";
+    }
 }
