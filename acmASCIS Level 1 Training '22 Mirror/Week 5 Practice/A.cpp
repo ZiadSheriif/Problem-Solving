@@ -42,11 +42,31 @@ ll lcm(ll a, ll b)
 {
     return (a / gcd(a, b)) * b;
 }
-void solve()
+void Que()
 {
+    queue<int> Q;
+    cin >> n;
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> a >> b;
+        if (a == 1)
+        {
+            Q.push(b);
+        }
+        else
+        {
+            if (Q.front() == b)
+                cout << "Yes";
+            else
+                cout << "No";
+            Q.pop();
+            cout << "\n";
+        }
+    }
 }
 
 int main()
 {
     fast;
+    Que();
 }

@@ -42,11 +42,36 @@ ll lcm(ll a, ll b)
 {
     return (a / gcd(a, b)) * b;
 }
-void solve()
+void books()
 {
+    cin >> n;
+    stack<int> S;
+    vi vec;
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> x;
+        if (x == 1)
+        {
+            cin >> y;
+            S.push(y);
+        }
+        else if (!S.empty())
+        {
+            if (x == 2)
+                S.pop();
+            else
+                vec.push_back(S.top());
+        }
+    }
+    for (int i = 0; i < vec.size(); ++i)
+    {
+
+        cout << vec[i] << "\n";
+    }
 }
 
 int main()
 {
     fast;
+    books();
 }
