@@ -15,7 +15,8 @@ using namespace std;
 typedef long long ll;
 typedef unsigned long long ull;
 typedef long double ld;
-
+typedef vector<pair<ll, ll>> vpll;
+typedef pair<int, int> pi;
 typedef vector<int> vi;
 typedef vector<long long> vll;
 typedef vector<double> vd;
@@ -42,11 +43,73 @@ ll lcm(ll a, ll b)
 {
     return (a / gcd(a, b)) * b;
 }
-void solve()
+
+bool sortbyCond(const pair<ll, ll> &a,
+                const pair<ll, ll> &b)
 {
+    if (a.first != b.first)
+        return (a.first < b.first);
+    else
+        return a.second > b.second;
+}
+
+bool sortStrPair(pair<string, pair<ll, ll>> &a, pair<string, pair<ll, ll>> &b)
+{
+    if (a.second.first != b.second.first)
+        return (a.second.first < b.second.first);
+    else
+        return a.second.second > b.second.second;
+}
+
+bool primeTest(ll n)
+{
+
+    for (int i = 2; i <= n / 2; i++)
+        if (n % i == 0)
+            return false;
+    return true;
 }
 
 int main()
 {
     fast;
+    string t;
+    cin >> n >> m;
+    vector<vector<int>> BW(n, vector<int>(m, 0));
+    set<pair<int, int>> mySet;
+    vector<pair<int, int>> vec;
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> t;
+        for (int j = 0; j < m; ++j)
+        {
+            if (t[j] == 'B')
+                BW[i][j] = 1;
+            else
+                vec.push_back({i, j});
+        }
+        if (vec.size() == m)
+        {
+            for (auto it : vec)
+                mySet.insert(it);
+        }
+        vec.clear();
+    }
+    for (int i = 0; i < m; ++i)
+    {
+        for (int j = 0; j < n; ++j)
+        {
+            if (BW[j][i] == 0)
+                vec.push_back({j, i});
+            else
+                break;
+        }
+        if (vec.size() == n)
+        {
+            for (auto it : vec)
+                mySet.insert(it);
+        }
+        vec.clear();
+    }
+    cout << (n * m) - mySet.size();
 }

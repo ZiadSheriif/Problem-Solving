@@ -42,11 +42,19 @@ ll lcm(ll a, ll b)
 {
     return (a / gcd(a, b)) * b;
 }
-void solve()
+
+void babyNumbers()
 {
+    cin >> n;
+    vi babies(n);
+    for (int &l : babies)
+        cin >> l;
+    sort(babies.begin(), babies.end(), greater<char>());
+    cout << babies[0] * 10 + babies[1];
 }
 
 int main()
 {
     fast;
+    babyNumbers();
 }

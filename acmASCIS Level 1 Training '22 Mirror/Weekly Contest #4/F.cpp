@@ -42,43 +42,26 @@ ll lcm(ll a, ll b)
 {
     return (a / gcd(a, b)) * b;
 }
-void Hazoma()
+
+void bus()
 {
-    cin >> n;
-    ll hazem = 0, khaled = 0, hossam = 0;
-    ll turn = 1;
-    for (int i = 1; i <= n; i++)
+    cin >> a >> n;
+    ll curr = 0;
+    while (n--)
     {
-        cin >> x;
-        if (turn == 1)
-            hazem += x;
-        else if (turn == 2)
-            khaled += x;
-        else
-            hossam += x;
-        if (turn % 3 == 0)
+        cin >> x >> y;
+        curr += (x - y);
+        if (curr > a)
         {
-            turn = 1;
-            continue;
+            cout << "NO";
+            return;
         }
-        turn++;
     }
-    ll maxNum = LONG_LONG_MIN;
-    if (hossam == khaled && khaled == hazem)
-        cout << "Draw";
-    else
-    {
-        if ((hazem > khaled && hazem > hossam) || hossam == khaled)
-            cout << "Hazoma";
-        else if ((hazem < khaled && khaled > hossam) || hossam == hazem)
-            cout << "Khaled";
-        else
-            cout << "Hossam";
-    }
+    cout << "YES";
 }
 
 int main()
 {
     fast;
-    Hazoma();
+    bus();
 }
