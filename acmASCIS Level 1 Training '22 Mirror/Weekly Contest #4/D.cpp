@@ -16,6 +16,7 @@ typedef long long ll;
 typedef unsigned long long ull;
 typedef long double ld;
 typedef vector<pair<ll, ll>> vpll;
+typedef vector<pair<int, int>> vpi;
 typedef pair<int, int> pi;
 typedef vector<int> vi;
 typedef vector<long long> vll;
@@ -75,9 +76,9 @@ int main()
     fast;
     string t;
     cin >> n >> m;
-    vector<vector<int>> BW(n, vector<int>(m, 0));
+    vvi BW(n, vector<int>(m, 0));
     set<pair<int, int>> mySet;
-    vector<pair<int, int>> vec;
+    vpi vec;
     for (int i = 0; i < n; ++i)
     {
         cin >> t;
@@ -109,7 +110,6 @@ int main()
             for (auto it : vec)
                 mySet.insert(it);
         }
-        vec.clear();
     }
     cout << (n * m) - mySet.size();
 }
