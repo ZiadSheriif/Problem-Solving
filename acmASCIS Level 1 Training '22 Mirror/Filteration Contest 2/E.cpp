@@ -91,15 +91,3 @@ ll nearestPrimeNumber(ll n)
     }
     return 2;
 }
-string solve()
-{
-    cin >> a >> b >> c >> d;
-    if (a == b && b == c && c == d)
-        return "YES";
-    return "NO";
-}
-int main()
-{
-    fast;
-    cout << solve();
-}

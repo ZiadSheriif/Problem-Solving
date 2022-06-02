@@ -91,12 +91,25 @@ ll nearestPrimeNumber(ll n)
     }
     return 2;
 }
-string solve()
+ll solve()
 {
-    cin >> a >> b >> c >> d;
-    if (a == b && b == c && c == d)
-        return "YES";
-    return "NO";
+    ll maxx = LONG_LONG_MIN;
+    ll minn = LONG_LONG_MAX;
+    cin >> n;
+    ll result = INT_MIN, re, dif;
+    for (ll i = 1; i <= n; i++)
+    {
+        cin >> a;
+        re = i * a;
+        if (maxx < re)
+            maxx = re;
+        if (minn > re)
+            minn = re;
+        dif = abs(maxx - minn);
+        if (result < dif)
+            result = dif;
+    }
+    return result;
 }
 int main()
 {

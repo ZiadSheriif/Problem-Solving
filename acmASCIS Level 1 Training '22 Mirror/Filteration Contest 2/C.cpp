@@ -91,12 +91,16 @@ ll nearestPrimeNumber(ll n)
     }
     return 2;
 }
+
 string solve()
 {
-    cin >> a >> b >> c >> d;
-    if (a == b && b == c && c == d)
-        return "YES";
-    return "NO";
+    cin >> n >> a >> b;
+    if (n > (a + b))
+        return "No";
+    int div = n / 2;
+    if (div <= a && div <= b)
+        return "Yes";
+    return "No";
 }
 int main()
 {
