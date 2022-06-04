@@ -1,4 +1,3 @@
-
 #include <bits/stdc++.h>
 #include <iostream>
 #include <vector>
@@ -104,31 +103,24 @@ ll nearestPrimeNumber(ll n)
     return 2;
 }
 
-void pharaohs()
-{
-    cin >> t;
-
-    while (t--)
-    {
-        cin >> n;
-        ll high = INT_MAX, ans = -1, low = 0, mid, sum = 0;
-        while (low <= high)
-        {
-            mid = (low + high) / 2;      // 10/2=5 ,,2 ,,3
-            sum = (mid * (mid + 1)) / 2; // 15 ,,3 ,,6
-            if (n <= sum)
-            {                   // 6<=15  ,, 6<=3 ,,
-                high = mid - 1; // 4 ,,2
-                ans = mid;      // 5  ,,3
-            }
-            else
-                low = mid + 1; // 3
-        }
-        cout << ans << endl;
-    }
-}
 int main()
 {
     fast;
-    pharaohs();
+    cin >> t;
+    while (t--)
+    {
+        cin >> n;
+        double sq = sqrt(n);
+        if (sq == ll(sq))
+        {
+            if (primeTest(sq))
+            {
+                cout << "YES"
+                     << "\n";
+                continue;
+            }
+        }
+        cout << "NO"
+             << "\n";
+    }
 }

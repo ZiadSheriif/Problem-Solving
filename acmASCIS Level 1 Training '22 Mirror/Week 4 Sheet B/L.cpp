@@ -1,4 +1,3 @@
-
 #include <bits/stdc++.h>
 #include <iostream>
 #include <vector>
@@ -14,6 +13,7 @@ using namespace std;
 #include <string>
 
 typedef long long ll;
+typedef unsigned long long usll;
 typedef unsigned long long ull;
 typedef long double ld;
 typedef vector<pair<ll, ll>> vpll;
@@ -45,7 +45,15 @@ ll lcm(ll a, ll b)
 {
     return (a / gcd(a, b)) * b;
 }
-
+usll factorial(usll n)
+{
+    if (n == 0)
+        return 1;
+    c = n;
+    for (int i = n - 1; i > 1; i--)
+        c *= i;
+    return c;
+}
 bool sortbyCond(const pair<ll, ll> &a,
                 const pair<ll, ll> &b)
 {
@@ -104,31 +112,27 @@ ll nearestPrimeNumber(ll n)
     return 2;
 }
 
-void pharaohs()
+void solve()
 {
     cin >> t;
-
+    ll temp, count = 0, temp2 = 0;
     while (t--)
     {
-        cin >> n;
-        ll high = INT_MAX, ans = -1, low = 0, mid, sum = 0;
-        while (low <= high)
-        {
-            mid = (low + high) / 2;      // 10/2=5 ,,2 ,,3
-            sum = (mid * (mid + 1)) / 2; // 15 ,,3 ,,6
-            if (n <= sum)
-            {                   // 6<=15  ,, 6<=3 ,,
-                high = mid - 1; // 4 ,,2
-                ans = mid;      // 5  ,,3
-            }
-            else
-                low = mid + 1; // 3
-        }
-        cout << ans << endl;
+        ll temp, count = 0, temp2 = 0;
+        cin >> a >> b;
+        temp = abs(a - b);
+        temp2 = temp / 10;
+        count += temp2;
+        if (temp % 10)
+            cout << ++count;
+        else
+            cout << count;
+        cout << "\n";
     }
 }
+
 int main()
 {
     fast;
-    pharaohs();
+    solve();
 }
