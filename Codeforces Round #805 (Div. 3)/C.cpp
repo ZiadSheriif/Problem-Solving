@@ -126,7 +126,7 @@ void solve()
 {
     ll k;
     cin >> n >> k;
-    unordered_map<ll, vector<ll>> train;
+    map<ll, vll> train;
     ll i = 1, x;
     while (n--)
     {
@@ -138,7 +138,7 @@ void solve()
     while (k--)
     {
         cin >> a >> b;
-        if (train.find(a) == train.end() || train.find(b) == train.end())
+        if (train[a].empty() || train[b].empty())
         {
             cout << "NO" << '\n';
             continue;
