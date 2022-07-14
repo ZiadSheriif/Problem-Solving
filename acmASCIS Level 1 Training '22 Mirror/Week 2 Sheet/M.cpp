@@ -151,8 +151,7 @@ void solve()
         maxNum = max(vec[i], maxNum + vec[i]);
         res = max(maxNum, res);
     }
-    res = max(res, 0ll);
-    cout << res << '\n';
+    cout << max(res, (ll)0) << '\n';
 }
 
 int main()
