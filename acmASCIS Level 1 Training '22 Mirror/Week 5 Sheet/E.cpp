@@ -35,20 +35,17 @@ typedef vector<string> vs;
 ll n, t, c;
 string S;
 
-ll gcd(ll a, ll b)
-{
+ll gcd(ll a, ll b) {
     if (b == 0)
         return a;
     return gcd(b, a % b);
 }
 
-ll lcm(ll a, ll b)
-{
+ll lcm(ll a, ll b) {
     return (a / gcd(a, b)) * b;
 }
 
-usll factorial(usll n)
-{
+usll factorial(usll n) {
     if (n == 0)
         return 1;
     c = n;
@@ -57,38 +54,32 @@ usll factorial(usll n)
     return c;
 }
 
-bool sortbyCond(const pair<ll, ll> &a, const pair<ll, ll> &b)
-{
+bool sortbyCond(const pair<ll, ll> &a, const pair<ll, ll> &b) {
     if (a.first != b.first)
         return (a.first < b.first);
     else
         return a.second > b.second;
 }
 
-bool sortStrPair(pair<string, pair<ll, ll>> &a, pair<string, pair<ll, ll>> &b)
-{
+bool sortStrPair(pair<string, pair<ll, ll>> &a, pair<string, pair<ll, ll>> &b) {
     if (a.second.first != b.second.first)
         return (a.second.first < b.second.first);
     else
         return a.second.second > b.second.second;
 }
 
-bool sortChar(pair<char, ll> &a, pair<char, ll> &b)
-{
+bool sortChar(pair<char, ll> &a, pair<char, ll> &b) {
     if (a.second != b.second)
         return (a.second > b.second);
     else
         return a.first > b.first;
 }
 
-bool primeTest(ll n)
-{
+bool primeTest(ll n) {
 
     bool flag = true;
-    for (int i = 2; i * i <= n; i++)
-    {
-        if (n % i == 0)
-        {
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) {
             flag = false;
             break;
         }
@@ -100,19 +91,16 @@ bool primeTest(ll n)
     return false;
 }
 
-ll nearestPrimeNumber(ll n)
-{
+ll nearestPrimeNumber(ll n) {
     if (n & 1)
         n -= 2;
     else
         n--;
     int i, j;
-    for (i = n; i >= 2; i -= 2)
-    {
+    for (i = n; i >= 2; i -= 2) {
         if (i % 2 == 0)
             continue;
-        for (j = 3; j * j <= i; j += 2)
-        {
+        for (j = 3; j * j <= i; j += 2) {
             if (i % j == 0)
                 break;
         }
@@ -122,8 +110,7 @@ ll nearestPrimeNumber(ll n)
     return 2;
 }
 
-void DFSGraph(int v, vector<bool> &visited, stack<int> &Stack, vector<int> *graph)
-{
+void DFSGraph(int v, vector<bool> &visited, stack<int> &Stack, vector<int> *graph) {
     visited[v] = true;
     for (auto it = graph[v].begin(); it != graph[v].end(); it++)
         if (!visited[*it])
@@ -131,22 +118,53 @@ void DFSGraph(int v, vector<bool> &visited, stack<int> &Stack, vector<int> *grap
     Stack.push(v);
 }
 
-void topSort(vector<int> *Graph, stack<int> &s, vector<bool> &visited)
-{
+void topSort(vector<int> *Graph, stack<int> &s, vector<bool> &visited) {
     for (int i = 0; i < visited.size(); i++)
         if (!visited[i])
             DFSGraph(i, visited, s, Graph);
 }
 
-void solve()
-{
+
+void solve() {
+    cin >> n;
+    vs Intro(n);
+    int cnt = 0;
+    for (string &x: Intro) {
+        cin >> x;
+        if (x == "Header" || x == "EndHeader")
+            cnt++;
+    }
+    if (Intro[0] != "Header" || Intro[n - 1] != "EndHeader" || cnt > 2) {
+        cout << "WA";
+        return;
+    }
+    stack<string> Stack;
+    bool test = true;
+    for (string s: Intro) {
+        if (s.substr(0, 3) != "End")
+            Stack.push(s);
+        else if (Stack.top() == s.substr(3, s.size() - 3))
+            Stack.pop();
+        else {
+            test = false;
+            break;
+        }
+    }
+    if (test)
+        cout << "ACC";
+    else
+        cout << "WA";
+
+
 }
 
-int main()
-{
+int main() {
     fast;
     t = 1;
-    //    cin >> t;
+//    cin >> t;
     while (t--)
         solve();
 }
+
+
+
