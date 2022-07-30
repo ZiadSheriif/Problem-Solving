@@ -1,9 +1,8 @@
-# Problem-Solving
+#### Problems Solution
 
-<!-- #### Solutions For Some Problems From:
-    1.FE-CU training
-    2.acmASCIS Contests and Sheets on Codeforce
-    3.CodeForce's contests
-    4.Assuit's Sheet -->
-
-
+- ***FE-CU training***
+- ***acmASCIS Contests and Sheets on Codeforce***
+- ***Codeforce's contests***
+- ***Assuit's sheet***
+- ***Public contests***
+- ***Hackerrank problems***
